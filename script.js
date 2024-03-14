@@ -38,6 +38,55 @@
 
 const cart = ["shoes", "pants", "kurta"];
 
-const promise = createOrder(cart); // which returns an order API
+const promise = createOrder(cart) // returns orderId
 
-promise.then(() => proceedToPayment(orderId)); 
+promise
+.then(function(orderId) {
+    console.log('orderId', orderId);
+    // proceedToPayment(orderId);
+})
+.then(function(){
+    proceedToPayment(orderId);
+})
+.then(function(paymentInfo){
+    console.log(paymentInfo);
+})
+.catch(function(err) {
+    console.log(err.message);
+})
+
+// creating a promise
+
+function createOrder(cart) {
+
+    const pr = new Promise((resolve, reject) => {
+
+        if(!validateCart(cart)){
+            const err = new Error("Cart is not valid")
+            reject(err);
+        }
+
+        //logic for createOrder
+        const orderId = "12345";
+
+        if(orderId) {
+            setTimeout(function () {
+                resolve(orderId);
+            }, 5000);
+        }
+
+    });
+
+    return pr;
+}
+
+function proceedToPayment(orderId) {
+
+    return new Promise( ( resolve, reject ) => {
+        resolve("Payment successfull");
+    } )
+}
+
+function validateCart(cart){
+    return false;
+}
