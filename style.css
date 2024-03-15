@@ -1,0 +1,32 @@
+.parent {
+    background: cyan;
+    width: 100vw;
+    height: 30px;
+    display: flex;
+    /* flex-direction: row-reverse; */
+    justify-content: space-between;
+    /* flex-wrap: wrap */
+    flex-flow: row wrap;
+}
+
+.child {
+    background: yellow;
+    width: 33vw;
+    height: 30px;
+}
+
+.child:nth-child(1) {
+    background-color: orange;
+}
+
+.child:nth-child(2) {
+    background-color: aquamarine;
+}
+
+.child:nth-child(3) {
+    background-color: green;
+}
+
+.child:nth-child(4) {
+    background-color: blueviolet;
+}
